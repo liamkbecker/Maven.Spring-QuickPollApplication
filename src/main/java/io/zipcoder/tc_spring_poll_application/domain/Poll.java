@@ -9,14 +9,14 @@ public class Poll {
 
     @Id
     @GeneratedValue
-    //@Column(name = "POLL_ID")
+    @Column(name = "POLL_ID")
     private Long id;
 
-    //@Column(name = "QUESTION")
+    @Column(name = "QUESTION")
     private String question;
 
     @OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "POLL_ID")
+    @JoinColumn(name = "POLL_ID")
     @OrderBy
     Set<Option> options = new HashSet<Option>();
 

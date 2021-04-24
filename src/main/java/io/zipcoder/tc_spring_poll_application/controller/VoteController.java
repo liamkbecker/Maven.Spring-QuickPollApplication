@@ -29,4 +29,15 @@ public class VoteController {
                 fromCurrentRequest().path("/{id}").buildAndExpand(vote.getId()).toUri());
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
     }
+
+    @RequestMapping(value="/polls/votes", method=RequestMethod.GET)
+    public Iterable<Vote> getAllVotes() {
+        return voteRepository.findAll();
+    }
+
+    @RequestMapping(value="/polls/{pollId}/votes", method=RequestMethod.GET)
+    public Iterable<Vote> getVote(@PathVariable Long pollId) {
+        return voteRepository.findVotesByPoll(pollId);
+    }
+
 }
